@@ -10,3 +10,5 @@ Database  :atvESIG
 Port      :5432
 Username  :postgres
 Password  :123
+
+página inicial: localhost:8080/atvESIG2/faces/Index.xhtml
