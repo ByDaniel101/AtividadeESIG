@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:b="http://bootsfaces.net/ui">
+<h:head>
+	<title>ESIG - Editar</title>
+</h:head>
+<h:body>
+	<b:container id="navBar">
+	<b:navBar brand="Inicio" brandHref="index.xhtml" fluid="true">
+		  <f:facet name="kebab">
+		      <span class="fa fa-chevron-right"></span>
+		  </f:facet>
+		  <b:navbarLinks>
+		    <b:navLink value="Cadastrar Atividade" href="cadastrar.xhtml"></b:navLink>
+		   
+		  </b:navbarLinks>
+		</b:navBar>
+	</b:container>
+	
+	<h3 align = "center">Estado atual</h3>
+
+		<h:form>
+			<h:dataTable width="95%" var="a" value="#{Edit.findAll()}" border="1" cellspacing="2" cellpadding="1">
+
+				<h:column>
+						<f:facet name="header">Id</f:facet>
+						<h:outputText value="#{a.id}"></h:outputText>
+				</h:column>
+
+				<h:column>
+						<f:facet name="header">Titulo</f:facet>
+						<h:outputText value="#{a.titulo}"></h:outputText>
+				</h:column>
+	
+				<h:column>
+						<f:facet name="header">Responsavel</f:facet>
+						<h:outputText value="#{a.responsavel}"></h:outputText>
+				</h:column>
+				<h:column>
+						<f:facet name="header">Prioridade</f:facet>
+						<h:outputText value="#{a.prioridade}"></h:outputText>
+				</h:column>
+				
+				<h:column>
+						<f:facet name="header">Deadline</f:facet>
+						<h:outputText value="#{a.deadline}"></h:outputText>
+				</h:column>
+				
+				<h:column>
+						<f:facet name="header">Situação</f:facet>
+						<h:outputText value="#{a.situacao}"></h:outputText>
+				</h:column>
+				
+				<h:column >
+						<f:facet name="header">Descricao</f:facet>
+						<h:outputText value="#{a.descricao}"></h:outputText>
+				</h:column>
+				
+			</h:dataTable>	
+	</h:form> <br /> <br />
+		
+
+	<b:panel title="Novos dados" look="success" collapsible="false" >
+	<b:form>
+			<b:inputText  value="#{Edit.titulo}" label="Titulo: "/>	
+			<b:inputTextarea value="#{Edit.descricao}" label="Descrição: "/>	
+						
+			<b:selectOneMenu value="#{Edit.responsavel}" label="Responsavel: ">
+				<f:selectItem itemValue="" itemLabel="-Selecionar-"></f:selectItem>
+				<f:selectItem itemValue="Joao" itemLabel="João"></f:selectItem>
+				<f:selectItem itemValue="Maria" itemLabel="Maria"></f:selectItem>
+				<f:selectItem itemValue="Cleber" itemLabel="Cleber"></f:selectItem>
+			</b:selectOneMenu>
+			
+				
+			<b:selectOneMenu value="#{Edit.prioridade}" label="Prioridade: ">
+				<f:selectItem itemValue="" itemLabel="-Selecionar-"></f:selectItem>
+				<f:selectItem itemValue="Baixa" itemLabel="Baixa"></f:selectItem>
+				<f:selectItem itemValue="Media" itemLabel="Media"></f:selectItem>
+				<f:selectItem itemValue="Alta" itemLabel="Alta"></f:selectItem>
+			</b:selectOneMenu>
+			
+			
+				<b:selectOneMenu value="#{Edit.situacao}" label="Situação: ">
+				<f:selectItem itemValue="" itemLabel="-Selecionar-"></f:selectItem>
+				<f:selectItem itemValue="Em andamento" itemLabel="Em andamento"></f:selectItem>
+				<f:selectItem itemValue="Concluido" itemLabel="Concluido"></f:selectItem>
+			</b:selectOneMenu>
+
+			<b:inputText value="#{Edit.deadline}" label="Deadline(DD/MM/AAAA)"/>
+			<b:commandButton type="submit" value="Atualizar" action="#{Edit.atualizarGo(a.id)}"/>
+			
+		</b:form>
+	</b:panel>
+	
+</h:body>
+	
+	<h6>(deixe em branco o que não desejar alterar)</h6>
+</html>

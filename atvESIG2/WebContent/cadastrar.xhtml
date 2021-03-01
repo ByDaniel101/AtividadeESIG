@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:b="http://bootsfaces.net/ui">
+<h:head>
+	<title>Gerenciador de tarefas</title>
+	<style>
+	.page {
+  display: flex;
+  align-items: center;
+  margin: 0px auto;
+  width: 70%;
+  height: 100vh;
+  background-color: rgb(255, 255, 255);
+  text-align: center;
+  padding: 10px 0px;
+}
+
+	.navBar{
+	width: 100%;
+	}
+	
+	</style>
+</h:head>
+<h:body>
+
+	<b:container id="navBar" styleClass="navBar">
+	
+		<b:navBar brand="Inicio" brandHref="index.xhtml" fluid="true">
+		  <f:facet name="kebab">
+		      <span class="fa fa-chevron-right"></span>
+		  </f:facet>
+		  <b:navbarLinks>
+		    <b:navLink value="Cadastrar Atividade" href="cadastrar.xhtml"></b:navLink>
+		   
+		  </b:navbarLinks>
+		</b:navBar>
+	</b:container>
+	
+	<b:container id="tabela">
+		
+		<b:panel title="Cadastrar Atividade" look="success" collapsible="false" >
+		<b:form horizontal="true">
+		
+			<b:inputText  value="#{atividade.titulo}" label="Titulo: "/>
+	
+			<b:inputTextarea value="#{atividade.descricao}" label="Descrição: " tooltip="Maximo de 140 Caracteres"/>
+				
+			<b:selectOneMenu value="#{atividade.responsavel}" label="Responsavel: ">
+				<f:selectItem itemValue="Joao" itemLabel="João"></f:selectItem>
+				<f:selectItem itemValue="Maria" itemLabel="Maria"></f:selectItem>
+				<f:selectItem itemValue="Cleber" itemLabel="Cleber"></f:selectItem>
+			</b:selectOneMenu>
+					
+			<b:selectOneMenu value="#{atividade.prioridade}" label="Prioridade:">
+				<f:selectItem itemValue="Baixa" itemLabel="Baixa"></f:selectItem>
+				<f:selectItem itemValue="Media" itemLabel="Media"></f:selectItem>
+				<f:selectItem itemValue="Alta" itemLabel="Alta"></f:selectItem>
+			</b:selectOneMenu>
+					
+			<b:inputText value="#{atividade.deadline}" label="Deadline(DD/MM/AAAA)"/><br/>
+			<b:commandButton action="#{atividade.salvar}" type="submit" value="Cadastrar"></b:commandButton>
+
+		</b:form>
+		</b:panel>
+
+	</b:container>
+</h:body>
+</html>
